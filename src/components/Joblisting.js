@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJobsStart,fetchJobsSuccess } from '../utils/jobSlice';
+import Grid from '@material-ui/core/Grid';
+import JobCard from './jobCard/jobCard';
 const Joblisting = () => {
     const dispatch = useDispatch()
     const [loading,setLoading] =useState(false)
@@ -31,7 +33,13 @@ const Joblisting = () => {
       };
       console.log(jobs,"joblist")
   return (
-    <div>Joblisting</div>
+    <Grid container spacing={3}>
+      {jobs.map((job, index) => (
+        <Grid item xs={12} sm={6} md={4} key={index}>
+          <JobCard {...job} />
+        </Grid>
+      ))}
+    </Grid>
 
   )
 }
