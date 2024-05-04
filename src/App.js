@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import './App.css';
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Joblisting from './components/Joblisting';
 import { appStore } from './utils/appStore';
 function App() {

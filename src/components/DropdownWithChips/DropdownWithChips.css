@@ -1,0 +1,10 @@
+.dropdownForm {
+    margin: 1rem;
+    width: 300px;
+}
+
+.chipsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
