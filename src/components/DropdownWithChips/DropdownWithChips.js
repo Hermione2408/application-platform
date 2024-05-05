@@ -3,7 +3,7 @@ import { Select, MenuItem, FormControl, InputLabel, OutlinedInput, Chip } from '
 import './DropdownWithChips.css'; 
 import CrossIcon from "../../utils/images/cross-svgrepo-com.svg"
 const DropdownWithChips = (props) => {
-    const {allOptions,onSelect,label,updateOptions} = props
+    const {allOptions,onSelect,label,updateOptions,originalOptions} = props
     // const allOptions = ['Option 1', 'Option 2', 'Option 3'];
     const [options, setOptions] = useState(allOptions); 
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -13,11 +13,13 @@ const DropdownWithChips = (props) => {
         const {
             target: { value },
         } = event;
-        setSelectedOptions(value); 
-        setOptions(allOptions.filter(option => !value.includes(option))); 
+        setSelectedOptions(value);
+        let tempOptions = [...allOptions] 
+        tempOptions = allOptions.filter(option => !value.includes(option))
+        setOptions(tempOptions); 
         setOpen(false);
-        onSelect(selectedOptions)
-        updateOptions(options)
+        onSelect(value)
+        updateOptions(tempOptions)
 
     };
 
@@ -31,9 +33,9 @@ const DropdownWithChips = (props) => {
     };
     const deleteAll =()=>{
         setSelectedOptions([]);
-    setOptions(allOptions); 
-    onSelect(selectedOptions)
-    updateOptions(options)
+        setOptions(originalOptions); 
+        onSelect([])
+        updateOptions(originalOptions)
     }
     const handleClickOpen = () => {
         setOpen(true); // Open dropdown
