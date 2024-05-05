@@ -1,10 +1,49 @@
 .dropdownForm {
-    margin: 1rem;
-    width: 300px;
-}
-
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .dropdownForm .MuiFormControl-root {
+    min-height: 50px; 
+  }
+  
+  .dropdownForm .MuiInputBase-root {
+    height: 50px; 
+    padding: 3px;
+  }
+  
+  .dropdownForm .MuiOutlinedInput-input {
+    padding: 8px 14px; 
+  }
+  
+  .dropdownForm .MuiInputLabel-outlined {
+    transform: translate(14px, 12px) scale(1); 
+  }
+  
+  .dropdownForm .MuiInputLabel-shrink {
+    transform: translate(14px, -6px) scale(0.75); 
+  }
+  
 .chipsContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+}
+.chip {
+    background-color: #fff; /* White background */
+    color: #333; /* Darker text for better visibility */
+    border-radius: 5px !important;
+    height: 21px !important;
+    padding: 3px !important;
+  }
+  
+  .chipDeleteIcon {
+    color: #080808 !important; /* Gray delete icon */
+  }
+.crossIcon{
+    height: 21px;
+}
+.select-multiple-chip{
+    display: flex;
+    justify-content: space-between;
 }

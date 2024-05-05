@@ -1,10 +1,12 @@
 import React from 'react'
 import DropdownWithChips from '../DropdownWithChips/DropdownWithChips'
+import Dropdown from '../Dropdown/Dropdown'
 import "./Header.css"
 const Header = () => {
   return (
 
-    <div className='header'><DropdownWithChips/></div>
+    <div className='header'><DropdownWithChips/>
+    < Dropdown/></div>
   )
 }
 

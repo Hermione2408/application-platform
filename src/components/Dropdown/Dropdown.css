@@ -1,0 +1,25 @@
+.dropdownForm {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .dropdownForm .MuiFormControl-root {
+    min-height: 50px; 
+  }
+  
+  .dropdownForm .MuiInputBase-root {
+    height: 50px; 
+    padding: 3px;
+  }
+  
+  .dropdownForm .MuiOutlinedInput-input {
+    padding: 8px 14px; 
+  }
+  
+  .dropdownForm .MuiInputLabel-outlined {
+    transform: translate(14px, 12px) scale(1); 
+  }
+  
+  .dropdownForm .MuiInputLabel-shrink {
+    transform: translate(14px, -6px) scale(0.75); 
+  }

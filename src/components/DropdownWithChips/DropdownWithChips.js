@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Select, MenuItem, FormControl, InputLabel, OutlinedInput, Chip } from '@mui/material';
 import './DropdownWithChips.css'; 
-
+import CrossIcon from "../../utils/images/cross-svgrepo-com.svg"
 const DropdownWithChips = () => {
     const allOptions = ['Option 1', 'Option 2', 'Option 3'];
     const [options, setOptions] = useState(allOptions); 
@@ -19,12 +19,15 @@ const DropdownWithChips = () => {
     };
 
     const handleDelete = (optionToDelete) => () => {
-        console.log(optionToDelete,"optionnn")
         setSelectedOptions((currentSelectedOptions) =>
             currentSelectedOptions.filter(option => option !== optionToDelete)
         );
         setOptions(currentOptions => [...currentOptions, optionToDelete].sort()); 
     };
+    const deleteAll =()=>{
+        setSelectedOptions([]);
+    setOptions(allOptions); 
+    }
     const handleClickOpen = () => {
         setOpen(true); // Open dropdown
     };
@@ -47,15 +50,19 @@ const DropdownWithChips = () => {
                 renderValue={(selected) => (
                     <div className="chipsContainer">
                         {selected.map((option) => (
-                            <Chip
-                                key={option}
-                                label={option}
-                                onDelete={ handleDelete(option)}
-                                onMouseDown={(event) => {
-                                    event.stopPropagation();
-                                  }}                            />
+                               <Chip
+                               key={option}
+                               label={option}
+                               onDelete={handleDelete(option)}
+                               onMouseDown={(event) => event.stopPropagation()}
+                               className="chip"
+                               deleteIcon={<span className="chipDeleteIcon">&times;</span>} 
+                           />
                         ))}
+                    <img className="crossIcon" src={CrossIcon} onClick={deleteAll}                                onMouseDown={(event) => event.stopPropagation()} />
+                    <hr />
                     </div>
+                    
                 )}
                 MenuProps={{
                     PaperProps: {
