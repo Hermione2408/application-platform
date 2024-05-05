@@ -6,7 +6,8 @@ import {
   setRole,
   setLocation,
   setNoOfEmployees,
-  setTechStack,
+  setTechStack,setMinExperience,setCompanyName,setMinBasePay
+
 } from "../../utils/jobSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -23,12 +24,38 @@ const Header = () => {
   ];
   let location = ["Remote", "Hybrid", "In-office"];
   let noOfEmployee = ["1-10", "51-100", "101-200", "201-500", "500+"];
-  let techStacks = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"];
+  let experience = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"];
+  const minBasePay = [
+    "0L",
+    "10L",
+    "20L",
+    "30L",
+    "40L",
+    "50L",
+    "60L",
+    "70L"
+];
+const techStacks = [
+  "Python",
+  "Java",
+  "GoLang",
+  "Ruby/Rails",
+  "C++",
+  "Kotlin",
+  "Django",
+  "C#",
+  "GraphQL"
+];
+
   const dispatch = useDispatch();
   const [rolesOptions, setRolesOptions] = useState(roles);
   const [locationsOptions, setLocationsOptions] = useState(location);
   const [noOfEmployeeOptions, setNoOfEmploeeOptions] = useState(noOfEmployee);
   const [techStackOptions, setTechStackOptions] = useState(techStacks);
+  const [experienceOptions, setExperienceOptions] = useState(experience);
+  // const [companyOptions, setCompanyOptions] = useState(noOfEmployee);
+  const [minBasePayOptions, setMinBasePayOptions] = useState(minBasePay);
+
 
   const handleChangeRoles = (values) => {
     dispatch(setRole(values));
@@ -54,6 +81,24 @@ const Header = () => {
   };
   const updateTechStackOptions = (values) => {
     setTechStackOptions(values);
+  };
+  // const handleChangeExperience = (values) => {
+  //   dispatch(setMinExperience(values));
+  // };
+  // const updateExperienceOptions = (values) => {
+  //   setExperienceOptions(values);
+  // };
+  // const handleChangeCompanyOptions = (values) => {
+  //   dispatch(setCompanyName(values));
+  // };
+  // const updateCompanyOptions = (values) => {
+  //   setCompanyOptions(values);
+  // };
+  const handleChangeMinBasePay = (values) => {
+    dispatch(setMinBasePay(values));
+  };
+  const updateMinBasePayOptions= (values) => {
+    setMinBasePayOptions(values);
   };
 
   return (
@@ -86,8 +131,12 @@ const Header = () => {
         updateOptions={(values) => updateTechStackOptions(values)}
         originalOptions={techStacks}
       />
-      <Dropdown />
-      <Dropdown />
+      <Dropdown allOptions={minBasePayOptions}
+        onSelect={(values) => handleChangeMinBasePay(values)}
+        label={"Min Base Pay"}
+        updateOptions={(values) => updateMinBasePayOptions(values)}
+        originalOptions={minBasePay}/>
+      {/* <Dropdown /> */}
     </div>
   );
 };

@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import './Dropdown.css'
-const Dropdown = () => {
-  const [age, setAge] = useState('');
+import CrossIcon from "../../utils/images/cross-svgrepo-com.svg"
 
-  const options = [
-    { value: 10, label: 'Ten' },
-    { value: 20, label: 'Twenty' },
-    { value: 30, label: 'Thirty' }
-  ];
+const Dropdown = (props) => {
+    const {allOptions,onSelect,label,updateOptions,originalOptions} = props
+
+    const [options, setOptions] = useState(allOptions); 
+    const [selectedOptions, setSelectedOptions] = useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value); 
+    setSelectedOptions(event.target.value); 
+    onSelect(event.target.value)
   };
-
+  const deleteAll = () => {
+    setSelectedOptions("");
+    onSelect("")
+};
   return (
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <InputLabel id="demo-simple-select-label">{label}</InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={age}
-        label="Age"
+        value={selectedOptions}
+        label={label}
         onChange={handleChange}
+        renderValue={  (selected)=>     <div>   {selected}   <img className="crossIcon" src={CrossIcon} onClick={deleteAll}                                onMouseDown={(event) => event.stopPropagation()} /> </div>       
+    }
       >
         {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
+          <MenuItem key={option} value={option}>
+            {option}
           </MenuItem>
         ))}
       </Select>
