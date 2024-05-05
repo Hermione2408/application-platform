@@ -18,7 +18,7 @@ const Dropdown = (props) => {
     onSelect("")
 };
   return (
-    <FormControl fullWidth>
+    <FormControl className="dropdownForm">
       <InputLabel id="demo-simple-select-label">{label}</InputLabel>
       <Select
         labelId="demo-simple-select-label"
@@ -26,7 +26,9 @@ const Dropdown = (props) => {
         value={selectedOptions}
         label={label}
         onChange={handleChange}
-        renderValue={  (selected)=>     <div>   {selected}   <img className="crossIcon" src={CrossIcon} onClick={deleteAll}                                onMouseDown={(event) => event.stopPropagation()} /> </div>       
+        renderValue={  (selected)=>     <div style={{display:'flex',alignItems:'center'}}>   {selected}  {selected.length >1 &&<div className='vl'>
+        <img className="crossIcon" src={CrossIcon} onClick={deleteAll}                                onMouseDown={(event) => event.stopPropagation()} />
+        </div>} </div>       
     }
       >
         {options.map((option) => (
