@@ -73,7 +73,7 @@ const JobCard = (props) => {
           About us: <br />{props.jobDetailsFromCompany}
         </Typography>
       </CardContent>
-      <BottomContainer/>
+      <BottomContainer minExp={props.minExp}/>
     </Card>
   );
 };

@@ -26,7 +26,7 @@ const Dropdown = (props) => {
         value={selectedOptions}
         label={label}
         onChange={handleChange}
-        renderValue={  (selected)=>     <div style={{display:'flex',alignItems:'center'}}>   {selected}  {selected.length >1 &&<div className='vl'>
+        renderValue={  (selected)=>     <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>   {selected}  {selected.length >0 &&<div className='vl'>
         <img className="crossIcon" src={CrossIcon} onClick={deleteAll}                                onMouseDown={(event) => event.stopPropagation()} />
         </div>} </div>       
     }

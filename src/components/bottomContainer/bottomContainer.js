@@ -46,7 +46,8 @@ const theme = createMuiTheme({
   },
 });
 
-const BottomContainer = () => {
+const BottomContainer = (props) => {
+  const {minExp} = props
   const classes = useStyles();
 
   return (
@@ -61,7 +62,7 @@ const BottomContainer = () => {
             Minimum Experience
           </Typography>
           <Typography variant="body2" color="secondary">
-            8 Years
+            {minExp ? `${minExp} Years` : "NA"}
           </Typography>
           </div>
         </Box>

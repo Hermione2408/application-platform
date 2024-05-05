@@ -47,12 +47,9 @@ const Joblisting = () => {
   const filterJobs = () => {
     console.log(filters,"filter")
     const filtered = jobs.filter(job => {
-      const minExp = job.minExp || 0;
-      const maxExp = job.maxExp || 'Unlimited';
-      const experienceRange = `${minExp} - ${maxExp}`;
-    
+     
       return (
-        (!filters.minExperience || experienceRange === filters.minExperience) &&
+        (!filters.minExperience || job.minExp > filters.minExperience) &&
         (!filters.companyName || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase())) &&
         (filters.location.length === 0 || filters.location.includes(job.location.toLowerCase())) &&
         (filters.role.length === 0 || filters.role.includes(job.jobRole.toLowerCase())) &&

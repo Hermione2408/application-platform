@@ -58,7 +58,7 @@ const DropdownWithChips = (props) => {
                 value={selectedOptions}
                 onChange={handleChange}
                 input={<OutlinedInput id="select-multiple-chip" label="Select Option" />}
-                renderValue={(selected) => (
+                renderValue={(selected) => selected ?  (
                     <div style={{display:'flex',alignItems:'center'}}>
                     <div className="chipsContainer">
                         {selected.map((option) => (
@@ -76,7 +76,7 @@ const DropdownWithChips = (props) => {
                     <img className="crossIcon" src={CrossIcon} onClick={deleteAll}                                onMouseDown={(event) => event.stopPropagation()} />
                     </div>}
                     </div>
-                )}
+                ) : label}
                 MenuProps={{
                     PaperProps: {
                         style: {

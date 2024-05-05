@@ -17,7 +17,8 @@ const Header = () => {
   let roles = ["frontend", "ios", "android", "backend", "tech lead"]
   let location = ["delhi ncr", "mumbai", "remote", "chennai", "bangalore"]
   let noOfEmployee = ["1-10", "51-100", "101-200", "201-500", "500+"];
-  let experience = ["3 - 6", "0 - Unlimited", "2 - 11", "5 - 6", "1 - 8", "8 - 9", "7 - 15", "3 - 12", "1 - 5", "6 - 11"]
+  let experience = ["0","1","2","3","4","5","6","7","8","9","10"]
+
   const minBasePay = [
     "0L",
     "10L",
@@ -28,13 +29,11 @@ const Header = () => {
     "60L",
     "70L"
 ];
-const techStacks = ["Python", "Java", "GoLang", "Ruby/Rails", "C++", "Kotlin", "Django", "C#", "GraphQL"]
 
   const dispatch = useDispatch();
   const [rolesOptions, setRolesOptions] = useState(roles);
   const [locationsOptions, setLocationsOptions] = useState(location);
   const [noOfEmployeeOptions, setNoOfEmploeeOptions] = useState(noOfEmployee);
-  const [techStackOptions, setTechStackOptions] = useState(techStacks);
   const [experienceOptions, setExperienceOptions] = useState(experience);
   // const [companyOptions, setCompanyOptions] = useState(noOfEmployee);
   const [minBasePayOptions, setMinBasePayOptions] = useState(minBasePay);
@@ -65,12 +64,6 @@ const handleChange = (event) => {
     setNoOfEmploeeOptions(values);
   };
 
-  const handleChangeTechStack = (values) => {
-    dispatch(setTechStack(values));
-  };
-  const updateTechStackOptions = (values) => {
-    setTechStackOptions(values);
-  };
   const handleChangeExperience = (values) => {
     dispatch(setMinExperience(values));
   };
@@ -112,13 +105,6 @@ const handleChange = (event) => {
         label={"No of Employee"}
         updateOptions={(values) => updateNoEmployeeOptions(values)}
         originalOptions={noOfEmployee}
-      />
-      <DropdownWithChips
-        allOptions={techStackOptions}
-        onSelect={(values) => handleChangeTechStack(values)}
-        label={"Tech Stack"}
-        updateOptions={(values) => updateTechStackOptions(values)}
-        originalOptions={techStacks}
       />
       <Dropdown allOptions={minBasePayOptions}
         onSelect={(values) => handleChangeMinBasePay(values)}
