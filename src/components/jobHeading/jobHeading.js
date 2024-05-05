@@ -15,11 +15,15 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    fontWeight: 'bold',
     marginRight: theme.spacing(1),
+    fontSize:'16px',
+    fontWeight:'initial'
   },
+  
   location: {
     color: theme.palette.text.secondary,
+    fontSize:'14px',
+
   },
 }));
 
@@ -30,13 +34,13 @@ const JobHeader = ({ logo, title, location,jobRole }) => {
     <div className={classes.root}>
       <Avatar src={logo} className={classes.avatar} />
       <div>
-        <Typography variant="body2" component="div" className={classes.location}>
+        <Typography variant="body" component="div" className={classes.location}>
           {title}
         </Typography>
-        <Typography variant="p" component="div" className={classes.title}>
+        <Typography  component="div" className={classes.title}>
           {jobRole}
         </Typography>
-        <Typography variant="p" className={classes.title}>
+        <Typography variant="p" className={classes.location}>
           {location}
         </Typography>
       </div>

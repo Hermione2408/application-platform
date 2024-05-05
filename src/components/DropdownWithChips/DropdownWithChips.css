@@ -17,6 +17,10 @@
   .chipDeleteIcon {
     color: #080808 !important; /* Gray delete icon */
   }
+  .chipDeleteIcon:hover{
+    color: #af2323 !important; /* Gray delete icon */
+
+  }
 .crossIcon{
     height: 21px;
 }

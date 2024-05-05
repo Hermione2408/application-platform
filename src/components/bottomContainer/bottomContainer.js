@@ -10,9 +10,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     backgroundColor: '#fff',
-    padding: theme.spacing(2),
+    paddingTop: theme.spacing(0), 
+    paddingRight: theme.spacing(2), 
+    paddingBottom: theme.spacing(2), 
+    paddingLeft: theme.spacing(2), 
     borderRadius: theme.spacing(1),
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
   },
   buttonContainer: {
     display: 'flex',
@@ -21,7 +23,15 @@ const useStyles = makeStyles((theme) => ({
   },
   applyButton:{
     padding:'12px',
-    backgroundColor:'rgb(85, 239, 196)'
+    backgroundColor:'rgb(85, 239, 196)',
+    fontSize:14
+  },
+  btmText:{
+    fontSize:13
+  },
+  btmText2:{
+    fontSize:14,
+    fontWeight:300
   },
   expContainer:{
     display:'flex',
@@ -54,14 +64,11 @@ const BottomContainer = (props) => {
     <ThemeProvider theme={theme}>
       <Box className={classes.root}>
         <Box>
-          <Typography variant="subtitle1" color="primary" className={classes.view}>
-            View Job
-          </Typography>
           <div className={classes.expContainer}>
-          <Typography variant="body2" color="secondary">
+          <Typography variant="body" color="secondary" className={classes.btmText} >
             Minimum Experience
           </Typography>
-          <Typography variant="body2" color="secondary">
+          <Typography variant="body" className={classes.btmText2} >
             {minExp ? `${minExp} Years` : "NA"}
           </Typography>
           </div>
@@ -69,11 +76,10 @@ const BottomContainer = (props) => {
         <Box className={classes.buttonContainer}>
           <Button
             variant="contained"
-            color="primary"
             size="small"
             className={classes.applyButton}
           >
-            Easy Apply
+           ⚡ Easy Apply
           </Button>
         </Box>
       </Box>
