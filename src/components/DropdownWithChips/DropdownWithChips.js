@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Select, MenuItem, FormControl, InputLabel, OutlinedInput, Chip } from '@mui/material';
 import './DropdownWithChips.css'; 
 import CrossIcon from "../../utils/images/cross-svgrepo-com.svg"
-const DropdownWithChips = () => {
-    const allOptions = ['Option 1', 'Option 2', 'Option 3'];
+const DropdownWithChips = (props) => {
+    const {allOptions,onSelect,label,updateOptions} = props
+    // const allOptions = ['Option 1', 'Option 2', 'Option 3'];
     const [options, setOptions] = useState(allOptions); 
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [open, setOpen] = useState(false);
@@ -15,6 +16,8 @@ const DropdownWithChips = () => {
         setSelectedOptions(value); 
         setOptions(allOptions.filter(option => !value.includes(option))); 
         setOpen(false);
+        onSelect(selectedOptions)
+        updateOptions(options)
 
     };
 
@@ -23,10 +26,14 @@ const DropdownWithChips = () => {
             currentSelectedOptions.filter(option => option !== optionToDelete)
         );
         setOptions(currentOptions => [...currentOptions, optionToDelete].sort()); 
+        onSelect(selectedOptions)
+        updateOptions(options)
     };
     const deleteAll =()=>{
         setSelectedOptions([]);
     setOptions(allOptions); 
+    onSelect(selectedOptions)
+    updateOptions(options)
     }
     const handleClickOpen = () => {
         setOpen(true); // Open dropdown
@@ -37,7 +44,7 @@ const DropdownWithChips = () => {
     };
     return (
         <FormControl className="dropdownForm">
-            <InputLabel id="demo-multiple-chip-label">Select Option</InputLabel>
+            <InputLabel id="demo-multiple-chip-label">{label}</InputLabel>
             <Select
                 labelId="demo-multiple-chip-label"
                 multiple

@@ -7,7 +7,8 @@ import JobCard from "./jobCard/jobCard";
 const Joblisting = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const { jobs, hasMore } = useSelector((state) => state.job);
+  const { jobs, hasMore,filters } = useSelector((state) => state.job);
+  console.log(filters,"filters")
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     fetchJobs();
