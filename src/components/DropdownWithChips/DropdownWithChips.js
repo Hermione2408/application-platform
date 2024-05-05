@@ -24,12 +24,14 @@ const DropdownWithChips = (props) => {
     };
 
     const handleDelete = (optionToDelete) => () => {
-        setSelectedOptions((currentSelectedOptions) =>
-            currentSelectedOptions.filter(option => option !== optionToDelete)
-        );
-        setOptions(currentOptions => [...currentOptions, optionToDelete].sort()); 
-        onSelect(selectedOptions)
-        updateOptions(options)
+        let tempSelected = [...selectedOptions]
+        tempSelected = tempSelected.filter((el)=> el != optionToDelete)
+        let tempOptions = [...allOptions]
+        tempOptions.push(optionToDelete)
+        setSelectedOptions(tempSelected);
+        setOptions(tempOptions); 
+        onSelect(tempSelected)
+        updateOptions(tempOptions)
     };
     const deleteAll =()=>{
         setSelectedOptions([]);

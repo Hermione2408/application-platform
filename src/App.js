@@ -6,8 +6,12 @@ import { appStore } from './utils/appStore';
 function App() {
   return (
   <Provider store ={appStore}>
+    <div className='grid-container'>
+
   <Header/>
   <Joblisting />
+  </div>
+
   </Provider>
 )
 }

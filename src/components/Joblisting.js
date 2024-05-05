@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import JobCard from './jobCard/jobCard';
 import { fetchJobsStart, fetchJobsSuccess } from "../utils/jobSlice";
-
+import { Box } from '@material-ui/core';
+import NoJobsImage from "../assets/img/noJobs.png"
 const Joblisting = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -44,23 +45,28 @@ const Joblisting = () => {
   };
 
   const filterJobs = () => {
+    console.log(filters,"filter")
     const filtered = jobs.filter(job => {
+      const minExp = job.minExp || 0;
+      const maxExp = job.maxExp || 'Unlimited';
+      const experienceRange = `${minExp} - ${maxExp}`;
+    
       return (
-        (filters.minExperience ? job.minExp >= filters.minExperience : true) &&
-        (filters.companyName ? job.companyName.toLowerCase().includes(filters.companyName.toLowerCase()) : true) &&
-        (filters.location.length > 0 ? filters.location.includes(job.location.toLowerCase()) : true) &&
-        (filters.role.length > 0 ? filters.role.includes(job.jobRole.toLowerCase()) : true) &&
-        (filters.noOfEmployees.length > 0 ? filters.noOfEmployees.includes(job.noOfEmployees) : true) &&
-        (filters.techStack.length > 0 ? job.techStack.some(stack => filters.techStack.includes(stack.toLowerCase())) : true) &&
-        (filters.minBasePay ? job.minJdSalary >= filters.minBasePay : true)
+        (!filters.minExperience || experienceRange === filters.minExperience) &&
+        (!filters.companyName || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase())) &&
+        (filters.location.length === 0 || filters.location.includes(job.location.toLowerCase())) &&
+        (filters.role.length === 0 || filters.role.includes(job.jobRole.toLowerCase())) &&
+        (filters.minBasePay === '' || job.minJdSalary >= filters.minBasePay.replace('L', ''))
       );
     });
     setFilteredJobs(filtered);
   };
+  
 
   console.log(filteredJobs, "Filtered job list");
   return (
-    <InfiniteScroll
+    <>
+    {false ?(<InfiniteScroll
       dataLength={filteredJobs.length}
       next={fetchJobs}
       hasMore={hasMore}
@@ -73,7 +79,13 @@ const Joblisting = () => {
           </Grid>
         ))}
       </Grid>
-    </InfiniteScroll>
+    </InfiniteScroll>):(
+      <Box className='noJobs'>
+        <img src={NoJobsImage} alt="No jobs" width={150} height={150} />
+        <span>No jobs available for this category at the moment</span>
+      </Box>
+    )}
+    </>
   );
 };
 
