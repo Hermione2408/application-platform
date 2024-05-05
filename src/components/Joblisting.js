@@ -68,7 +68,7 @@ const Joblisting = () => {
     >
       <Grid container spacing={3}>
         {filteredJobs.map((job, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={3} key={index}>
             <JobCard {...job} />
           </Grid>
         ))}

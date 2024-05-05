@@ -12,19 +12,10 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 const Header = () => {
-  let roles = [
-    "Tech Lead",
-    "Dev-Ops",
-    "Data Engineer",
-    "Data Science",
-    "Computer-Vision",
-    "Nlp",
-    "Deep-Learning",
-    "Test / Qa",
-  ];
-  let location = ["Remote", "Hybrid", "In-office"];
+  let roles = ["frontend", "ios", "android", "backend", "tech lead"]
+  let location = ["delhi ncr", "mumbai", "remote", "chennai", "bangalore"]
   let noOfEmployee = ["1-10", "51-100", "101-200", "201-500", "500+"];
-  let experience = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"];
+  let experience = ["3 - 6", "0 - Unlimited", "2 - 11", "5 - 6", "1 - 8", "8 - 9", "7 - 15", "3 - 12", "1 - 5", "6 - 11"]
   const minBasePay = [
     "0L",
     "10L",
@@ -35,17 +26,7 @@ const Header = () => {
     "60L",
     "70L"
 ];
-const techStacks = [
-  "Python",
-  "Java",
-  "GoLang",
-  "Ruby/Rails",
-  "C++",
-  "Kotlin",
-  "Django",
-  "C#",
-  "GraphQL"
-];
+const techStacks = ["Python", "Java", "GoLang", "Ruby/Rails", "C++", "Kotlin", "Django", "C#", "GraphQL"]
 
   const dispatch = useDispatch();
   const [rolesOptions, setRolesOptions] = useState(roles);
