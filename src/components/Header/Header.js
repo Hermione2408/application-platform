@@ -11,6 +11,8 @@ import {
 } from "../../utils/jobSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import TextField from '@mui/material/TextField';
+
 const Header = () => {
   let roles = ["frontend", "ios", "android", "backend", "tech lead"]
   let location = ["delhi ncr", "mumbai", "remote", "chennai", "bangalore"]
@@ -37,6 +39,12 @@ const techStacks = ["Python", "Java", "GoLang", "Ruby/Rails", "C++", "Kotlin", "
   // const [companyOptions, setCompanyOptions] = useState(noOfEmployee);
   const [minBasePayOptions, setMinBasePayOptions] = useState(minBasePay);
 
+  const [company, setCompany] = useState("");
+
+const handleChange = (event) => {
+  setCompany(event.target.value);
+  dispatch(setCompanyName(event.target.value));
+};
 
   const handleChangeRoles = (values) => {
     dispatch(setRole(values));
@@ -63,15 +71,15 @@ const techStacks = ["Python", "Java", "GoLang", "Ruby/Rails", "C++", "Kotlin", "
   const updateTechStackOptions = (values) => {
     setTechStackOptions(values);
   };
-  // const handleChangeExperience = (values) => {
-  //   dispatch(setMinExperience(values));
-  // };
-  // const updateExperienceOptions = (values) => {
-  //   setExperienceOptions(values);
-  // };
-  // const handleChangeCompanyOptions = (values) => {
-  //   dispatch(setCompanyName(values));
-  // };
+  const handleChangeExperience = (values) => {
+    dispatch(setMinExperience(values));
+  };
+  const updateExperienceOptions = (values) => {
+    setExperienceOptions(values);
+  };
+  const handleChangeCompanyOptions = (values) => {
+    dispatch(setCompanyName(values));
+  };
   // const updateCompanyOptions = (values) => {
   //   setCompanyOptions(values);
   // };
@@ -117,7 +125,18 @@ const techStacks = ["Python", "Java", "GoLang", "Ruby/Rails", "C++", "Kotlin", "
         label={"Min Base Pay"}
         updateOptions={(values) => updateMinBasePayOptions(values)}
         originalOptions={minBasePay}/>
-      {/* <Dropdown /> */}
+              <Dropdown allOptions={experienceOptions}
+        onSelect={(values) => handleChangeExperience(values)}
+        label={"Experience"}
+        updateOptions={(values) => updateMinBasePayOptions(values)}
+        originalOptions={experience}/>
+      <TextField
+            label="Search Company Name"
+            variant="outlined"
+            className="dropdownForm"
+            value={company}
+            onChange={handleChange}
+        />  {/* <Dropdown /> */}
     </div>
   );
 };

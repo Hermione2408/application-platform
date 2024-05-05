@@ -66,7 +66,7 @@ const Joblisting = () => {
   console.log(filteredJobs, "Filtered job list");
   return (
     <>
-    {false ?(<InfiniteScroll
+    {filterJobs && filteredJobs.length>0 ?(<InfiniteScroll
       dataLength={filteredJobs.length}
       next={fetchJobs}
       hasMore={hasMore}
