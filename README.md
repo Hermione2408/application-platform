@@ -26,7 +26,7 @@ A step-by-step series of examples that tell you how to get a development environ
 
 Clone the repository:
 ```
- git clone https://github.com/yourusername/candidate-application-platform.git 
+ git clone git@github.com:Hermione2408/application-platform.git
 ```
 
 Install dependencies:
